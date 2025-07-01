@@ -11,6 +11,12 @@ terraform {
 provider "cloudflare" {
   api_token = var.cloudflare_api_token
 }
+data "cloudflare_zones" "zone" {
+  filter {
+    name   = "dolvladzio-schedule.pp.ua"
+    status = "active"
+  }
+}
 ##################################################################
 locals {
   records = [
@@ -33,7 +39,7 @@ resource "cloudflare_dns_record" "dns" {
     for rec in local.records : rec.name => rec
   }
 
-  zone_id = var.cloudflare_zone_id
+  zone_id = data.cloudflare_zones.zone.zones[0].id
   name    = each.value.name
   type    = each.value.type
   content = each.value.value
