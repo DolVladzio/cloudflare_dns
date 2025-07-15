@@ -24,7 +24,7 @@ locals {
       )
       proxied = lookup(record, "proxied", true)
       ttl     = lookup(record, "ttl", 1)
-      cloudflare_zone_id = record.cloudflare_zone_id
+      cloudflare_zone_id = lookup(record, "cloudflare_zone_id", "10c784ed7180528f51deadc5fe62581e")
     }
   ]
 }
