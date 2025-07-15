@@ -1,8 +1,6 @@
 ##################################################################
 variable "cloudflare_api_token" {}
 ##################################################################
-# variable "cloudflare_zone_id" {}
-##################################################################
 variable "dns_records_config" {
   description = "DNS records from config"
   type = list(object({
