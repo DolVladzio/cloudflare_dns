@@ -24,7 +24,6 @@ locals {
       )
       proxied = lookup(record, "proxied", true)
       ttl     = lookup(record, "ttl", 1)
-      cloudflare_zone_id = record.cloudflare_zone_id
     }
   ]
 }
@@ -34,7 +33,7 @@ resource "cloudflare_dns_record" "dns" {
     for rec in local.records : rec.name => rec
   }
 
-  zone_id = each.value.cloudflare_zone_id
+  zone_id = var.cloudflare_zone_id
   name    = each.value.name
   type    = each.value.type
   content = each.value.value

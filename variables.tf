@@ -1,6 +1,8 @@
 ##################################################################
 variable "cloudflare_api_token" {}
 ##################################################################
+variable "cloudflare_zone_id" {}
+##################################################################
 variable "dns_records_config" {
   description = "DNS records from config"
   type = list(object({
@@ -9,7 +11,6 @@ variable "dns_records_config" {
     proxied       = bool
     value         = string
     resolve_value = optional(bool)
-    cloudflare_zone_id = string
   }))
 }
 ##################################################################
