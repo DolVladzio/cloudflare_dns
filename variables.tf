@@ -10,7 +10,7 @@ variable "dns_records_config" {
     type               = string
     proxied            = bool
     value              = string
-    cloudflare_zone_id = string
+    zone_id = string
   }))
 }
 ##################################################################
