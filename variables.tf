@@ -4,10 +4,10 @@ variable "cloudflare_api_token" {}
 variable "dns_records_config" {
   description = "DNS records from config"
   type = list(object({
-    name               = string
-    type               = string
-    proxied            = bool
-    value              = string
+    name    = string
+    type    = string
+    proxied = bool
+    value   = string
     zone_id = string
   }))
 }

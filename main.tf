@@ -34,7 +34,7 @@ resource "cloudflare_dns_record" "dns" {
     for rec in local.records : rec.name => rec
   }
 
-  zone_id = each.value.zone_id
+  zone_id = each.key.zone_id
   name    = each.value.name
   type    = each.value.type
   content = each.value.value
