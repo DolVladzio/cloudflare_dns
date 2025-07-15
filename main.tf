@@ -24,7 +24,7 @@ locals {
       )
       proxied = lookup(record, "proxied", true)
       ttl     = lookup(record, "ttl", 1)
-      zone_id = lookup(record, "zone_id", null)
+      zone_id = record.zone_id
     }
   ]
 }
