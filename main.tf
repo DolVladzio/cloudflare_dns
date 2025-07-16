@@ -15,13 +15,9 @@ provider "cloudflare" {
 locals {
   records = [
     for record in var.dns_records_config : {
-      name = record.name
-      type = record.type
-      value = (
-        lookup(record, "resolve_value", false) ?
-        lookup(var.resource_dns_map, record.value, record.value) :
-        record.value
-      )
+      name    = record.name
+      type    = record.type
+      value   = lookup(var.resource_dns_map, record.value, record.value)
       proxied = lookup(record, "proxied", true)
       ttl     = lookup(record, "ttl", 1)
       zone_id = record.zone_id
