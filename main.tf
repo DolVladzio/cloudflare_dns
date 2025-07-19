@@ -17,8 +17,8 @@ locals {
     for record in var.dns_records_config : {
       name    = record.name[var.environment]
       type    = record.type
-      value   = lookup(var.resource_dns_map, record.value, record.value)
-      value   = var.resource_dns_map[record.value[var.environment]]
+      # value   = lookup(var.resource_dns_map, record.value, record.value)
+      value   = var.resource_dns_map[record.value.name[var.environment]]
       proxied = lookup(record, "proxied", true)
       ttl     = lookup(record, "ttl", 1)
       zone_id = record.zone_id[var.environment]
