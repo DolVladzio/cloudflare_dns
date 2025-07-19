@@ -25,7 +25,5 @@ variable "dns_records_config" {
 ##################################################################
 variable "resource_dns_map" {
   description = "Map of resource names to DNS values"
-  type        = map(string)
-  default     = {}
 }
 ##################################################################
